@@ -16,11 +16,12 @@ public class StackPanelController : MonoBehaviour
     public StackPanelNextDelegate stackPanelNextDelegate;
     public StackPanelPreviousDelegate stackPanelPreviousDelegate;
 
-    private int index; 
+    private int index;
 
     public int Index
     {
         get => index;
+
         set
         {
             index = value;
@@ -29,11 +30,9 @@ public class StackPanelController : MonoBehaviour
         }
     }
 
-
     public void Next()
     {
         stackPanelNextDelegate?.Invoke();
-        Debug.Log(Index);
     }
 
     public void Previous() 
