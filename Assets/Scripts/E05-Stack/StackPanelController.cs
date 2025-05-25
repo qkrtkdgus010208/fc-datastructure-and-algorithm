@@ -16,27 +16,24 @@ public class StackPanelController : MonoBehaviour
     public StackPanelNextDelegate stackPanelNextDelegate;
     public StackPanelPreviousDelegate stackPanelPreviousDelegate;
 
+    private int index; 
+
     public int Index
     {
-        get
-        {
-            return Index;
-        }
-
+        get => index;
         set
         {
-            text.text = value.ToString();
-
-            if (value > 0 )
-            {
-                previousButton.interactable = true;
-            }
+            index = value;
+            text.text = index.ToString();
+            previousButton.interactable = index > 0;
         }
     }
+
 
     public void Next()
     {
         stackPanelNextDelegate?.Invoke();
+        Debug.Log(Index);
     }
 
     public void Previous() 
