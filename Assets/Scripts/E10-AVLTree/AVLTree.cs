@@ -6,7 +6,7 @@ public class AVLTree<T>
 {
     public BinaryTreeNode<T> Root { get; set; }
 
-    public int NodeHeight(BinaryTreeNode<T> node)
+    public int GetNodeHeight(BinaryTreeNode<T> node)
     {
         if (node == null)
         {
@@ -21,7 +21,7 @@ public class AVLTree<T>
         {
             return 0;
         }
-        return NodeHeight(node.LeftNode) - NodeHeight(node.RightNode);
+        return GetNodeHeight(node.LeftNode) - GetNodeHeight(node.RightNode);
     }
 
     public void Insert(T value)
@@ -50,7 +50,7 @@ public class AVLTree<T>
         }
 
         // 높이 업데이트
-        node.Height = 1 + Mathf.Max(NodeHeight(node.LeftNode), NodeHeight(node.RightNode));
+        node.Height = 1 + Mathf.Max(GetNodeHeight(node.LeftNode), GetNodeHeight(node.RightNode));
 
         // 균형 인수 계산
         int balanceFactor = GetBalanceFactor(node);
@@ -102,8 +102,8 @@ public class AVLTree<T>
         node.LeftNode = T2;
 
         // 높이 업데이트
-        node.Height = 1 + Mathf.Max(NodeHeight(node.LeftNode), NodeHeight(node.RightNode));
-        x.Height = 1 + Mathf.Max(NodeHeight(x.LeftNode), NodeHeight(x.RightNode));
+        node.Height = 1 + Mathf.Max(GetNodeHeight(node.LeftNode), GetNodeHeight(node.RightNode));
+        x.Height = 1 + Mathf.Max(GetNodeHeight(x.LeftNode), GetNodeHeight(x.RightNode));
 
         // 새로운 루트 노드 반환
         return x;
@@ -120,8 +120,8 @@ public class AVLTree<T>
         node.RightNode = T2;
 
         // 높이 업데이트
-        node.Height = 1 + Mathf.Max(NodeHeight(node.LeftNode), NodeHeight(node.RightNode));
-        y.Height = 1 + Mathf.Max(NodeHeight(y.LeftNode), NodeHeight(y.RightNode));
+        node.Height = 1 + Mathf.Max(GetNodeHeight(node.LeftNode), GetNodeHeight(node.RightNode));
+        y.Height = 1 + Mathf.Max(GetNodeHeight(y.LeftNode), GetNodeHeight(y.RightNode));
 
         // 새로운 루트 노드 반환
         return y;
